@@ -20,8 +20,8 @@ services:
     secrets:
       - webpassword
     volumes:
-      - $(pwd)/etc-pihole:/etc/pihole
-      - $(pwd)/etc-dnsmasq.d:/etc/dnsmasq.d
+      - $pwd/etc-pihole:/etc/pihole
+      - $pwd/etc-dnsmasq.d:/etc/dnsmasq.d
     dns:
       - 127.0.0.1
       - 1.1.1.1
