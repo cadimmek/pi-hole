@@ -11,8 +11,7 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     environment:
-      TZ: UTC
-      WEBPASSWORD: /run/secrets/pihole_webpassword
+      TZ: ${TZ}
       # cloudflare
       DNS1: 1.1.1.1
       #opendns
@@ -20,8 +19,8 @@ services:
     secrets:
       - webpassword
     volumes:
-      - $pwd/etc-pihole:/etc/pihole
-      - $pwd/etc-dnsmasq.d:/etc/dnsmasq.d
+      - ./etc-pihole:/etc/pihole
+      - ./etc-dnsmasq.d:/etc/dnsmasq.d
     dns:
       - 127.0.0.1
       - 1.1.1.1
@@ -31,6 +30,3 @@ services:
       - NET_ADMIN
     restart: always
 
-secrets:
-  pihole_webpassword:
-    external: true
